@@ -1,12 +1,14 @@
 function TimerClick()
 
+    Padle1 =  (math.floor(NamedControl.GetValue("p1")))
 
-    if math.floor(math.floor(NamedControl.GetValue("p1"))) == 10 then
-        NamedControl.SetPosition("m10.1", 1)
-    elseif math.floor(math.floor(NamedControl.GetValue("p1"))) ~= 10 then
-        NamedControl.SetPosition("m10.1", 0)
+    for i = 1,21 do 
+        if Padle1 == i then
+            NamedControl.SetPosition("m" .. i .. ".1", 1)
+        else NamedControl.SetPosition("m" .. i .. ".1", 0)
+        end
     end
-    print(math.floor(NamedControl.GetValue("p1")))
+
 end
 
 MyTimer = Timer.New()
