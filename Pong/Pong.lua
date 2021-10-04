@@ -1,14 +1,19 @@
+row = 1
 function TimerClick()
-
     Padle1 =  (math.floor(NamedControl.GetValue("p1")))
+    if row > 36 then
+        row = 0
+    end
 
     for i = 1,21 do 
         if Padle1 == i then
-            NamedControl.SetPosition("m" .. i .. ".1", 1)
-        else NamedControl.SetPosition("m" .. i .. ".1", 0)
+            row = (row + 1)
+            NamedControl.SetPosition("m" .. i .. "." .. row, 1)
+            NamedControl.SetPosition("m" .. i .. "." .. (row - 1), 0)
+        else
+            NamedControl.SetPosition("m" .. i .. "." .. row, 0)
         end
     end
-
 end
 
 MyTimer = Timer.New()
